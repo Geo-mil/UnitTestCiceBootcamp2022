@@ -41,6 +41,30 @@ final class UnitTestPresenter{
         }
         return result
     }
+    
+    func arraySquareOptionTwo(numberArray: [Int]) -> [Int] {
+        let result = numberArray.map { numberArray in
+            numberArray * numberArray
+        }
+        return result
+    }
+    
+    func arraySquareOptionThree(numberArray: [Int]) -> [Int] {
+        return numberArray.map { $0 * $0 }
+    }
+    
+    func toFah(degreeUnit: Double) -> Double{
+        return (degreeUnit * (9 * 0.2)) + 32
+    }
+    
+    func toDegree(fahUnit: Double) -> Double{
+        return (fahUnit - 32) * 5/9
+    }
+    
+    func toFahTwo(degreeUnit: Double) -> Double{
+        return (degreeUnit * 9/5) + 32
+    }
+    
 }
 
 extension UnitTestPresenter: UnitTestPresenterInputProtocol{

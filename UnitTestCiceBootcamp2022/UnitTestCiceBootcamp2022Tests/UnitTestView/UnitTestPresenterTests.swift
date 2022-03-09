@@ -86,4 +86,100 @@ class UnitTestPresenterTests: XCTestCase {
         XCTAssertEqual(resultExpected, numberSquare)
     }
     
+    func test_Array_Square_Option_Two_Result() {
+        var numbers = [Int]()
+        for index in 1...4{
+            numbers.append(index)
+        }
+        let numberSquare = presenter.arraySquareOptionTwo(numberArray: numbers)
+        
+        var resultExpected = [Int]()
+        resultExpected.append(1)
+        resultExpected.append(4)
+        resultExpected.append(9)
+        resultExpected.append(16)
+        
+        XCTAssertEqual(resultExpected, numberSquare)
+    }
+    
+    func test_Array_Square_Option_Three_Result() {
+        var numbers = [Int]()
+        for index in 1...4{
+            numbers.append(index)
+        }
+        let numberSquare = presenter.arraySquareOptionThree(numberArray: numbers)
+        
+        var resultExpected = [Int]()
+        resultExpected.append(1)
+        resultExpected.append(4)
+        resultExpected.append(9)
+        resultExpected.append(16)
+        
+        XCTAssertEqual(resultExpected, numberSquare)
+    }
+    
+    func test_Assert_Types() {
+        XCTAssertTrue(1 == 1)
+        XCTAssertFalse(1 == 2)
+        XCTAssertNil(nil)
+        XCTAssertNotNil(self.presenter)
+        XCTAssertEqual(self.presenter.sumar(numero1: 2, numero2: 2), 4)
+        XCTAssertEqual("Andres","Andres")
+        XCTAssertGreaterThan(10, 1)
+    }
+    
+    func test_Performance_Sut_Dividir() {
+        self.measure {
+            self.presenter.dividir(numero1: 4, numero2: 2)
+        }
+    }
+    
+    func test_Performance_Array_Square_Option_One() {
+        var number = [Int]()
+        for index in 1...5000000{
+            number.append(index)
+        }
+        self.measure {
+            self.presenter.arraySquareOptionOne(numberArray: number)
+        }
+    }
+    
+    func test_Performance_Array_Square_Option_Two() {
+        var number = [Int]()
+        for index in 1...5000000{
+            number.append(index)
+        }
+        self.measure {
+            self.presenter.arraySquareOptionTwo(numberArray: number)
+        }
+    }
+    
+    func test_Performance_Array_Square_Option_Three() {
+        var number = [Int]()
+        for index in 1...5000000{
+            number.append(index)
+        }
+        self.measure {
+            self.presenter.arraySquareOptionThree(numberArray: number)
+        }
+    }
+    
+    func test_Performance_toFah_One_Result() {
+        let expectedResult: Double = -9.4
+        let result = self.presenter.toFah(degreeUnit: -23)
+        XCTAssertEqual(expectedResult, result, accuracy: 0.001)
+        self.measure {
+            result
+        }
+    }
+    
+    func test_Performance_toFah_Two_Result() {
+        let expectedResult: Double = -9.4
+        let result = self.presenter.toFahTwo(degreeUnit: -23)
+        XCTAssertEqual(expectedResult, result, accuracy: 0.001)
+        self.measure {
+            result
+        }
+    }
+    
 }
